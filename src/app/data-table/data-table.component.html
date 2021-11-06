@@ -1,0 +1,56 @@
+    <div class="container">
+        <form (submit)="filterById()">
+            <div class="form-group">
+                <label>
+                    Min
+                    <input type="number" name="min" id="min" [(ngModel)]="min" class="form-control mb-2 mr-sm-2"/>
+                  </label>
+                  
+            </div>
+            <div class="form-group">
+                <label>
+                    Max
+                    <input type="number" name="max" id="max" [(ngModel)]="max" class="form-control mb-2 mr-sm-2"/>
+                  </label>
+                 
+            </div>
+
+            <button class="btn btn-primary" type="submit">Filtrar Por Nuevos Casos</button>
+            
+          </form>
+    </div>
+
+
+  <div *ngIf="casosCovid != null" class="container">
+    <table datatable [dtOptions]="dtOptions"   class="table table-striped table-dark">
+
+        <thead class="thead-dark" >
+            <tr>
+            <th scope="col" class="primary-td">Nuevos Casos</th>
+            <th scope="col">Nuevos Muertos</th>
+            <th scope="col">Nuevos Recuperados</th>
+            <th scope="col">Total Casos</th>
+            <th scope="col">Total Muertes</th>
+            <th scope="col">Total Recuperados</th>
+            <th scope="col">ObjectID</th>
+            <th scope="col" class="final-td">Fecha Actualización</th>
+            
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor = "let covid of casosCovid">
+            <td class="primary-td">{{covid.attributes.NUEVOS_CASOS}}</td>
+            <td >{{covid.attributes.NUEVOS_MUERTOS}}</td>
+            <td >{{covid.attributes.NUEVO_RECUPERADOS}}</td>
+            <td >{{covid.attributes.TOTAL_CASOS}}</td>
+            <td >{{covid.attributes.TOTAL_MUERTES}}</td>
+            <td >{{covid.attributes.TOTAL_RECUPERADOS}}</td>
+            <td >{{covid.attributes.OBJECTID}}</td>
+            <td class="final-td">{{covid.attributes.FECHA_ACTUALIZACION}}</td>
+        
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+  
